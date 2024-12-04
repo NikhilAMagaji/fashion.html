@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Boutique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Reset */
+        body, h1, h2, h3, p, ul, li, a, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #111;
+            color: white;
+            padding: 10px 20px;
+        }
+        .logo h1 {
+            font-size: 2rem;
+            color: #f4b400;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #f4b400;
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('fashion-banner.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .hero ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .hero ul li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .hero button {
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            background-color: #f4b400;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .hero button:hover {
+            background-color: #ff9800;
+        }
+        .product-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        .product {
+            width: 250px;
+            margin: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: white;
+        }
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product h3 {
+            font-size: 1.4rem;
+            margin: 10px 0;
+            color: #333;
+        }
+        .product p {
+            color: #555;
+            font-size: 1.1rem;
+        }
+        .product button {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .product button:hover {
+            background-color: #555;
+        }
+        #cart-items, #total-price {
+            margin: 20px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        #cart-items p {
+            margin: 10px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #111;
+            color: white;
+        }
+        footer p {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+        footer a {
+            color: #f4b400;
+            text-decoration: none;
+        }
+        #clear-cart {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        #clear-cart:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation Bar -->
+    <header>
+        <div class="logo">
+            <h1>Fashion Boutique</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="javascript:navigateTo('home')">Home</a></li>
+                <li><a href="javascript:navigateTo('shop')">Shop</a></li>
+                <li><a href="javascript:navigateTo('cart')">Cart</a></li>
+                <li><a href="javascript:navigateTo('about')">About Us</a></li>
+                <li><a href="javascript:navigateTo('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h2>Welcome to Fashion Boutique</h2>
+        <p>Redefine your wardrobe with elegance and style. Discover fashion that speaks your personality!</p>
+        <ul>
+            <li>🌟 Handpicked collections for every season</li>
+            <li>🛍️ Affordable luxury at your fingertips</li>
+            <li>💎 Shop from trusted brands and exclusive designs</li>
+        </ul>
+        <button onclick="navigateTo('shop')">Explore Now</button>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" style="display:none;">
+        <h2>Shop Our Collection</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="jeans.jpg" alt="Jeans">
+                <h3>Stylish Jeans</h3>
+                <p>Price: $40</p>
+                <button onclick="addToCart('Stylish Jeans', 40)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="shorts.jpg" alt="Shorts">
+                <h3>Casual Shorts</h3>
+                <p>Price: $25</p>
+                <button onclick="addToCart('Casual Shorts', 25)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="tshirt.jpg" alt="T-shirt">
+                <h3>Classic T-shirt</h3>
+                <p>Price: $20</p>
+                <button onclick="addToCart('Classic T-shirt', 20)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="dress.jpg" alt="Dress">
+                <h3>Elegant Dress</h3>
+                <p>Price: $50</p>
+                <button onclick="addToCart('Elegant Dress', 50)">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart" style="display:none;">
+        <h2>Your Cart</h2>
+        <div id="cart-items">
+            <p>No items in the cart.</p>
+        </div>
+        <div id="total-price">
+            <p>Total: $0</p>
+        </div>
+        <button id="clear-cart" onclick="clearCart()">Clear Cart</button>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" style="display:none;">
+        <h2>About Us</h2>
+        <p>Fashion Boutique offers high-quality, trendy fashion products at affordable prices. We strive to bring you the best styles for every occasion.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="display:none;">
+        <h2>Contact Us</h2>
+        <p>Have questions? Email us at <strong>contact@fashionboutique.com</strong> or call us at <strong>+123-456-7890</strong>.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Fashion Boutique. All rights reserved.</p>
+        <p>Follow us on <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a></p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceContainer = document.getElementById('total-price');
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>No items in the cart.</p>';
+            } else {
+                cart.forEach(item => {
+                    cartItemsContainer.innerHTML += `<p>${item.name} - $${item.price}</p>`;
+                    total += item.price;
+                });
+            }
+            totalPriceContainer.innerHTML = `<p>Total: $${total}</p>`;
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        function navigateTo(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Show home section by default
+        navigateTo('home');
+    </script>
+</body>
+</html>
